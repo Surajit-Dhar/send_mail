@@ -14,7 +14,7 @@ app.use(cors());
 app.get("/" , async (req,res) => {
 
     try{
-        console.log('For Testing');
+        console.log('Server is running...');
         res.status(200);
     }catch(err){
         res.status(400).send(err);
