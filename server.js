@@ -8,6 +8,12 @@ require('dotenv').config();
 
 
 const app = express();
+app.use((req,res,next)=>{
+  res.setHeader('Access-Control-Allow-Origin','*');
+  res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE,OPTION');
+  res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+  next(); 
+})
 app.use(bodyParser.json());
 app.use(cors());
 
