@@ -8,12 +8,15 @@ require('dotenv').config();
 
 
 const app = express();
-app.use((req,res,next)=>{
-  res.setHeader('Access-Control-Allow-Origin','*');
-  res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE,OPTION');
-  res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
-  next(); 
-})
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -21,7 +24,8 @@ app.get("/" , async (req,res) => {
 
     try{
         console.log('Server is running...');
-        res.status(200);
+        res.status(200).end("server is running..");
+        
     }catch(err){
         res.status(400).send(err);
     }
